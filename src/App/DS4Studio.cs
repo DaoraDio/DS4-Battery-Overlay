@@ -128,7 +128,10 @@ sealed class Overlay : Form
         trayMenu.Opening += delegate { UpdatePowerOffItem(); };
         if (loadPreferences)
         {
-            try { startupItem.Checked = WindowsStartup.IsEnabled(); }
+            try {
+                WindowsStartup.UpgradeRegistration(Application.ExecutablePath);
+                startupItem.Checked = WindowsStartup.IsEnabled();
+            }
             catch (UnauthorizedAccessException) { }
             catch (System.Security.SecurityException) { }
             startupItem.Click += delegate {
@@ -661,6 +664,7 @@ sealed class Overlay : Form
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         if (args.Length == 1 && args[0] == "--install-rtss-plugin") return RtssPluginInstaller.Run();
+        if (args.Length == 1 && args[0] == "--startup-self-test") return WindowsStartup.SelfTest(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "startup-self-test.txt"));
         if (args.Length == 1 && args[0] == "--rtss-self-test") return RtssDiagnostics.SelfTest();
         if (args.Length == 1 && args[0] == "--widget-self-test") return DesktopBatteryWidget.SelfTest(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "widget-self-test.txt"));
         if (args.Length == 1 && args[0] == "--studio-widget-self-test") return StudioWindowPresentation.SelfTest(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "studio-widget-self-test.txt"));
@@ -775,7 +779,8 @@ sealed class Overlay : Form
             using (var session = new RtssTestSession())
             using (var trayApp = new Overlay(session.Publisher, true, session.Legacy))
             {
-                trayApp.BeginInvoke(new Action(trayApp.Customize));
+                if (WindowsStartup.ShouldOpenSettings(args))
+                    trayApp.BeginInvoke(new Action(trayApp.Customize));
                 Application.Run();
             }
         }

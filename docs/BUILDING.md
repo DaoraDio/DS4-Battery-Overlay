@@ -36,11 +36,11 @@ The checked-in C# files are the final Version 1 sources. There is no source rewr
 
 ## Tests
 
-`-RunTests` runs the application's existing self-test entry points for appearance, battery mapping, power-off eligibility, PS-button hold timing, event export, RTSS output, widget behavior, and settings-window lifecycle. The C++ tests use dedicated fake RTSS/Afterburner mappings and verify that the plugin leaves foreign output intact.
+`-RunTests` runs the application's existing self-test entry points for appearance, battery mapping, power-off eligibility, PS-button hold timing, event export, tray-only startup and registration migration, RTSS output, widget behavior, and settings-window lifecycle. The C++ tests use dedicated fake RTSS/Afterburner mappings and verify that the plugin leaves foreign output intact.
 
 The appearance/RTSS/widget checks use Windows UI facilities, and some checks temporarily exercise then restore preferences. Run them in a normal Windows session with no simultaneous settings edits. They do not launch games, install plugins, modify Afterburner configuration, or write controller output reports. They supplement, rather than replace, testing with a controller and a game.
 
-GitHub Actions passes `-SkipDesktopTests` because hosted runners do not provide a normal user desktop. It runs the appearance, battery, power, PS-hold, export, and native plugin checks. Run the full default suite locally to also verify RTSS/widget desktop integration.
+GitHub Actions passes `-SkipDesktopTests` because hosted runners do not provide a normal user desktop. It runs the appearance, battery, power, PS-hold, export, startup, and native plugin checks. Run the full default suite locally to also verify RTSS/widget desktop integration.
 
 The workflow uses GitHub's official [checkout](https://github.com/actions/checkout) and [upload-artifact](https://github.com/actions/upload-artifact) actions.
 

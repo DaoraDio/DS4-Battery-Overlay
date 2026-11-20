@@ -553,11 +553,11 @@ sealed class RtssPage : UserControl
         Dock = DockStyle.Fill; BackColor = StudioTheme.Canvas; AutoScroll = true;
         guide.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
         Controls.Add(guide);
-        Paragraph(guide, "This setup requires MSI Afterburner and RivaTuner Statistics Server (RTSS) to be installed. RTSS hooks into games and draws on-screen overlays. This app sends its battery display to RTSS, which shows it inside the game.");
+        Paragraph(guide, "RivaTuner Statistics Server (RTSS) is required to show the battery overlay in games. RTSS handles game hooking and draws the battery display sent by this app. MSI Afterburner is optional.");
         status.ForeColor = StudioTheme.Muted;
         AddParagraph(guide, status);
-        Heading(guide, "1  Install MSI Afterburner and RTSS");
-        Paragraph(guide, "Install MSI Afterburner with RivaTuner Statistics Server (RTSS) selected in the installer.");
+        Heading(guide, "1  Install RTSS");
+        Paragraph(guide, "Install RivaTuner Statistics Server (RTSS). You can install it separately or select it in the optional MSI Afterburner installer below.");
         var download = new LinkLabel {
             Text = "Download MSI Afterburner (official MSI website)", Font = StudioTheme.Font(10),
             LinkColor = StudioTheme.Accent, ActiveLinkColor = StudioTheme.Text,
@@ -578,7 +578,7 @@ sealed class RtssPage : UserControl
         };
         AddParagraph(guide, download);
         Heading(guide, "2  Install the RTSS plugin");
-        Paragraph(guide, "Quit RTSS and MSI Afterburner completely, including their tray icons, then click Install plugin. This copies DS4PCStats.dll into RTSS's Plugins\\Client folder and prepares Afterburner for separate shortcuts. Windows may ask for administrator permission.");
+        Paragraph(guide, "Quit RTSS and, if installed, MSI Afterburner completely, including their tray icons, then click Install plugin. This copies DS4PCStats.dll into RTSS's Plugins\\Client folder and, if Afterburner is installed, prepares separate PC-stats shortcuts. Windows may ask for administrator permission.");
         var install = StudioTheme.Button("Install / update RTSS plugin", true);
         install.Margin = new Padding(0, 0, 0, 10);
         AddControl(install);
@@ -602,8 +602,8 @@ sealed class RtssPage : UserControl
         };
         Heading(guide, "3  Enable it in RTSS");
         Paragraph(guide, "Start RTSS. Open Setup > Plugins, tick DS4PCStats.dll, then click OK.");
-        Heading(guide, "4  Set shortcuts in the plugin");
-        Paragraph(guide, "In RTSS > Setup > Plugins, select DS4PCStats.dll and click Setup. Assign Toggle PC stats, Show PC stats and Hide PC stats there.\n\nLeave MSI Afterburner's Toggle / Show / Hide On-Screen Display shortcuts unassigned. Keep RTSS's master Show On-Screen Display ON so it can draw the battery.");
+        Heading(guide, "4  Set PC-stats shortcuts (if using Afterburner)");
+        Paragraph(guide, "In MSI Afterburner > Settings > On-Screen Display, clear the Toggle / Show / Hide On-Screen Display hotkeys. In RTSS > Setup > Plugins, select DS4PCStats.dll and click Setup. Assign Toggle PC stats, Show PC stats and Hide PC stats there. Keep RTSS's master Show On-Screen Display ON so it can draw the battery.");
         Paragraph(guide, "For the battery display, set RTSS's Application detection level to Low or higher, keep RTSS and this app running, and connect your controller.");
         ClientSizeChanged += delegate { FitGuide(); };
         VisibleChanged += delegate {

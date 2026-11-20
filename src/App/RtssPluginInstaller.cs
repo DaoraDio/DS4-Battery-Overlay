@@ -158,7 +158,7 @@ static class RtssPluginInstaller
                     "DS4OverlayRTSSTest", "RTSSPluginBackups"), RequireClosed);
             string message = (result.Changed ? "Plugin installed." : "The plugin is already up to date.") +
                 "\n\nStart RTSS, open Setup > Plugins, enable DS4PCStats.dll and click OK. Select the plugin and open Setup to set its shortcuts.";
-            if (!result.AfterburnerConfigured) message += "\n\nMSI Afterburner was not found. Run this installer again after installing it to prepare independent PC-stats shortcuts.";
+            if (!result.AfterburnerConfigured) message += "\n\nMSI Afterburner is optional. If you install it later, run this installer again to prepare independent PC-stats shortcuts.";
             if (result.BackupDirectory != null) message += "\n\nPrevious files were backed up to:\n" + result.BackupDirectory;
             MessageBox.Show(message, "RTSS plugin", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return 0;

@@ -6,15 +6,23 @@
 - Keep RTSS and the battery app running. Verify that RTSS's master Show On-Screen Display is enabled and application detection is Low or higher for the game.
 - Check the battery toggle shortcut. PC-stat visibility and battery visibility are separate.
 - Check RTSS's own compatibility with the game. Detection exclusions, graphics wrappers, protected games, and some presentation modes can prevent overlays. This app does not bypass game protections.
-- If the game runs elevated, check whether Windows is preventing RTSS or the app from accessing the required information. Use ordinary privileges where possible.
+- If RTSS is running but the overlay still does not appear, quit DS4 Battery Overlay, right-click its EXE, and choose Run as administrator.
+
+## Do I need MSI Afterburner?
+
+No. Only RTSS is required for the in-game battery overlay. MSI Afterburner is optional and is only needed if you want its PC monitoring statistics.
 
 ## Toggling PC stats also hides the battery
 
-Afterburner's global OSD shortcuts affect RTSS's master visibility. Leave them unassigned. Set Toggle / Show / Hide PC stats inside RTSS > Setup > Plugins > DS4PCStats.dll > Setup. Set the battery shortcut in the battery app.
+In MSI Afterburner > Settings > On-Screen Display, clear the Toggle, Show and Hide On-Screen Display hotkeys. In RTSS > Setup > Plugins, enable DS4PCStats.dll, select it, and open Setup. Assign Toggle PC stats, Show PC stats and Hide PC stats there. Keep RTSS's master Show On-Screen Display on. Set the battery shortcut separately on this app's Overlay page.
 
 ## The plugin installer asks me to close programs
 
-Quit RTSS and MSI Afterburner completely, including their tray icons. The installer updates the plugin and configuration while neither program is writing those files. Start them again after installation, then enable the plugin in RTSS.
+Quit RTSS and, if installed, MSI Afterburner completely, including their tray icons. The installer updates the plugin and configuration while neither program is writing those files. Start them again after installation, then enable the plugin in RTSS.
+
+## Does Windows startup open the settings window?
+
+No. Launch on Windows startup starts the app quietly in the tray. Click the tray icon to open settings. Running the EXE manually opens settings normally. Existing enabled startup entries for the same executable are updated automatically when you run the updated app.
 
 ## The controller is missing or updates pause
 

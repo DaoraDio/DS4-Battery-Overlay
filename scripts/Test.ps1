@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $testOutput = Join-Path $root 'artifacts\tests'
 New-Item -ItemType Directory -Path $testOutput -Force | Out-Null
-$checks = @('appearance','battery-scale','power','power-hold','events-export','rtss','widget','studio-widget')
+$checks = @('appearance','battery-scale','power','power-hold','events-export','startup','rtss','widget','studio-widget')
 if ($SkipDesktopTests) {
     $checks = @($checks | Where-Object { $_ -notin @('rtss','widget','studio-widget') })
     Write-Host 'Skipping RTSS/widget desktop integration tests: these require a real interactive Windows desktop.'

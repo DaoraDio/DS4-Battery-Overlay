@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Windows startup launches quietly in the tray; manual launches still open settings. Existing startup entries for the same executable are updated automatically.
+- Added common-problem troubleshooting and clarified that MSI Afterburner is optional; only RTSS is required for the in-game battery overlay.
+
 ## 1.0 — Version 1
 
 Initial public release of DS4 Battery Overlay.

@@ -43,4 +43,6 @@ It does not install RTSS itself or copy DLLs into game directories. Enable the p
 | Plugin hotkeys | `DS4PCStats.cfg` beside the installed client plugin |
 | Optional startup entry | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, value `DS4 Overlay RTSS Test` |
 
+The startup command includes `--startup` to suppress the settings window at login. A manual launch opens settings normally. Existing enabled entries pointing at the same executable are migrated to this command; disabled entries and entries for a different app copy are preserved.
+
 The internal development-era names remain to preserve existing users' data. No network service, account, telemetry, or update downloader is required by this application.

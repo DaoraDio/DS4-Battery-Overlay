@@ -17,7 +17,7 @@
 
 A lightweight Windows app that shows your DualShock 4 battery in games through **RivaTuner Statistics Server (RTSS)**. Add a movable desktop widget, choose when notifications appear, and personalize the controller's lightbar—all from one interface.
 
-**[Get started](#getting-started)** · **[Screenshots](#screenshots)** · **[Build from source](#build-from-source)** · **[Troubleshooting](docs/TROUBLESHOOTING.md)**
+**[Get started](#getting-started)** · **[Screenshots](#screenshots)** · **[Build from source](#build-from-source)** · **[Troubleshooting](#troubleshooting)**
 
 ## Features
 
@@ -38,19 +38,39 @@ A lightweight Windows app that shows your DualShock 4 battery in games through *
 
 - Windows 10 or 11, **64-bit**, with .NET Framework 4.8.
 - A DualShock 4 connected over Bluetooth or USB and visible to this app.
-- **MSI Afterburner and RTSS**, installed separately. Select RivaTuner Statistics Server in the Afterburner installer: **[official MSI Afterburner download](https://www.msi.com/Landing/afterburner)**.
+- **RTSS**, installed separately. MSI Afterburner is optional; you can also install RTSS through the **[official MSI Afterburner installer](https://www.msi.com/Landing/afterburner)** by selecting RivaTuner Statistics Server.
 
 ### Setup
 
 1. Download the Windows ZIP from this repository's **Releases** section, extract it to a permanent folder, and run `DS4-Battery-Overlay.exe`.
-2. Quit RTSS and MSI Afterburner completely, including their tray icons. In this app, open **How to Setup → Install / update RTSS plugin**. Accept the Windows administrator prompt.
+2. Quit RTSS and, if installed, MSI Afterburner completely, including their tray icons. In this app, open **How to Setup → Install / update RTSS plugin**. Accept the Windows administrator prompt.
 3. Start RTSS. Open **Setup → Plugins**, enable **DS4PCStats.dll**, and click **OK**.
-4. Select that plugin and open **Setup** to assign **Toggle PC stats**, **Show PC stats**, and **Hide PC stats**. Leave Afterburner's global OSD shortcuts unassigned and RTSS's master **Show On-Screen Display** switched on.
+4. If you use MSI Afterburner stats, select that plugin and open **Setup** to assign **Toggle PC stats**, **Show PC stats**, and **Hide PC stats**. Leave Afterburner's global OSD shortcuts unassigned. Keep RTSS's master **Show On-Screen Display** switched on.
 5. Keep RTSS and DS4 Battery Overlay running, set RTSS's **Application detection level** to **Low** or higher for the game, and connect your controller.
 
 The battery shortcut defaults to **Ctrl + Shift + F8** and can be changed on the Overlay page. Click the tray icon to bring the app forward; right-click it for quick actions.
 
 The app embeds its own plugin, so the install button does not require you to copy a DLL manually. It preserves existing plugin shortcuts, backs up changed files, and prepares Afterburner's output for independent PC-stat controls. See [what the installer changes](docs/ARCHITECTURE.md#plugin-installation).
+
+## Troubleshooting
+
+**I don't see any overlay in-game.**
+
+RTSS must be running to display in-game overlays. Keep both RTSS and DS4 Battery Overlay open.
+
+**RTSS is running, but there is still no overlay.**
+
+Quit DS4 Battery Overlay, right-click its EXE, and select **Run as administrator**. Also check that RTSS's **Show On-Screen Display** is on and **Application detection level** is **Low** or higher for your game.
+
+**Toggling MSI Afterburner stats also toggles the battery overlay.**
+
+In **MSI Afterburner → Settings → On-Screen Display**, clear the **Toggle**, **Show**, and **Hide On-Screen Display** hotkeys. Then open **RTSS → Setup → Plugins**, enable **DS4PCStats.dll**, select it, and click **Setup**. Set **Toggle PC stats**, **Show PC stats**, and **Hide PC stats** there. Keep RTSS's master OSD on; change the battery shortcut separately on this app's **Overlay** page.
+
+**Do I need MSI Afterburner installed?**
+
+No. Only **RTSS** is required for the in-game battery overlay. MSI Afterburner is optional.
+
+For other issues, see the [full troubleshooting guide](docs/TROUBLESHOOTING.md).
 
 ## Screenshots
 
@@ -114,7 +134,7 @@ See [Architecture](docs/ARCHITECTURE.md) for implementation details and [Trouble
 
 ## Updates and settings
 
-Quit the app before replacing the executable in the same folder. Settings and event history are kept separately and survive updates. Windows startup is opt-in and points to the executable's current location, so keep it in a permanent folder.
+Quit the app before replacing the executable in the same folder. Settings and event history are kept separately and survive updates. Windows startup is opt-in and launches quietly in the tray; click the tray icon to open settings. Opening the EXE manually still opens the settings window. Keep the executable in a permanent folder because the startup entry points to its current location.
 
 For compatibility with earlier development builds, settings use `HKEY_CURRENT_USER\Software\DS4OverlayRTSSTest`, and event history uses `%LOCALAPPDATA%\DS4OverlayRTSSTest\controller-events.log`.
 
