@@ -1,0 +1,37 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build, test and package
+        shell: powershell
+        run: .\Build.ps1 -RunTests -Package -SkipDesktopTests
+      - name: Upload Windows package
+        uses: actions/upload-artifact@v7
+        with:
+          name: DS4-Battery-Overlay-Windows
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          if-no-files-found: error
+      - name: Upload diagnostic reports
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-diagnostics
+          path: |
+            artifacts/app/*self-test.txt
+            artifacts/app/*error.txt
+          if-no-files-found: ignore

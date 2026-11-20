@@ -1,0 +1,17 @@
+/artifacts/
+/dist/
+/.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.log
+*.dat
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a problem with the app, controller, widget or in-game display.
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Include what you expected and the steps to reproduce the problem.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: App, Windows and RTSS versions
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Controller connection
+      options:
+        - Bluetooth
+        - USB
+        - Both / switching between them
+        - No controller connected
+  - type: input
+    attributes:
+      label: Game and graphics API (if this concerns an in-game overlay)
+  - type: textarea
+    attributes:
+      label: Additional details
+      description: Screenshots or relevant exported events can help. Remove any personal information before attaching them.

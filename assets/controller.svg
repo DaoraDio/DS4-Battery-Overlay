@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="96" viewBox="0 0 128 96" fill="none" stroke="#BBA4FF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+  <title>PS4 controller</title>
+  <desc>A smooth controller outline with a touchpad, inward D-pad, closely spaced face buttons and analog sticks, and no PS button.</desc>
+  <path stroke-width="4.5" d="M35 20C27 18 21 22 18 31C14 43 10 56 7 69C5 77 7 83 12 85C18 88 24 84 28 78L36 66C38 63 40 62 44 64C50 67 57 68 64 68C71 68 78 67 84 64C88 62 90 63 92 66L100 78C104 84 110 88 116 85C121 83 123 77 121 69C118 56 114 43 110 31C107 22 101 18 93 20C86 22 78 16 64 16C50 16 42 22 35 20Z" />
+  <rect x="45" y="23" width="36" height="19" rx="5" />
+  <path stroke-width="3.3" d="M30 29H33Q34.5 29 34.5 30.5V35H39Q40.5 35 40.5 36.5V39.5Q40.5 41 39 41H34.5V45.5Q34.5 47 33 47H30Q28.5 47 28.5 45.5V41H24Q22.5 41 22.5 39.5V36.5Q22.5 35 24 35H28.5V30.5Q28.5 29 30 29Z" />
+  <circle cx="49" cy="53" r="7.5" />
+  <circle cx="79" cy="53" r="7.5" />
+  <circle cx="96" cy="30.5" r="3.2" stroke-width="3.3" />
+  <circle cx="88.5" cy="38" r="3.2" stroke-width="3.3" />
+  <circle cx="103.5" cy="38" r="3.2" stroke-width="3.3" />
+  <circle cx="96" cy="45.5" r="3.2" stroke-width="3.3" />
+</svg>
